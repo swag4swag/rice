@@ -1,0 +1,113 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+@-moz-document url("chrome://browser/content/tabview.html")
+{
+/*Tab groups*/
+#bg
+{
+    background-color: transparent;
+    background-image: none;
+}
+#actions
+{
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+.groupItem
+{
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    border: 1px solid #444;
+    background-image: none !important;
+    background-color: #444;
+}
+.resizer
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAgMAAABGuH3ZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDBi8pV/YCYgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAMUExURQAAACUlJf///3h5ejX2g7cAAAADdFJOUwAAAPp2xN4AAAABYktHRAJmC3xkAAAAKklEQVQI12NgwA4kQIQGjMcG4nJZgJgGDAyMbUAWUxeMm/j/BwPDoi4NAE9tBjDQeFl1AAAAAElFTkSuQmCC);
+}
+.title-container:hover input.name,
+.title-container input.name:focus
+{
+    border-color: #555;
+}
+/*Tabs*/
+.tab
+{
+    background: none;
+}
+.tab:hover
+{
+    border: 1px solid #555;
+    border-radius: 0px;
+    margin: 3px;
+}
+.tab.focus:hover
+{
+    margin: 4px;
+}
+.tab.focus
+{
+    box-shadow: none !important;
+    border-radius: 0px !important;
+}
+.tab canvas, .cached-thumb
+{
+    border: 1px solid #555;
+}
+/*Tab favicons*/
+.favicon
+{
+    background-color: transparent;
+    border: none !important;
+    box-shadow: none;
+    border-radius: 0px !important;
+    padding: 2px !important;
+}
+.favicon img
+{
+    border: 1px solid #555;
+    border-radius: 0px !important;
+    padding: 1px !important;
+    background-color: #444;
+}
+.favicon:hover img
+{
+    border: 1px solid #ea7878;
+}
+/*Tab button*/
+#exit-button, #exit-button[groups="1"], #exit-button[groups="2"], #exit-button[groups="3"]
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDDjsC2/d9zwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURXh5ev///3h5etd1hBcAAAACdFJOUwAAdpPNOAAAAAFiS0dEAf8CLd4AAAA0SURBVAjXYwgNZQ0NYAgNdUUntbpasZEMDKyuDgyiWloNDEARLbA4EgmUBpkgGopOAm0BAKudGaCezXg8AAAAAElFTkSuQmCC);
+    width: 18px;
+    height: 18px;
+}
+#exit-button:hover
+{
+    background-color: #FFF;
+}
+#actions #searchbutton
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASBAMAAACk4JNkAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDES8NcpxTRgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAVUExURQAAAHh5enh5enh5enh5enh5ev///w4ZuDEAAAAFdFJOUwB/ks/mCqtWKQAAAAFiS0dEBmFmuH0AAAAuSURBVAjXY2AgBwgpQhmMJs4CEBaTA4sCOovRxFUAriMQrlsUJsjAiBAUJN52ABhdAx42Qg9zAAAAAElFTkSuQmCC);
+}
+/*Close buttons*//*DEVHERE*/
+.close
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQWEwYYP0RbhQAAAC1QTFRFVVVVV1dXWlpaXV1doaGho6Ojp6enqampqqqqq6urra2trq6ur6+vvLy8////GW2F2gAAAAFiS0dEDm+9ME8AAAA3SURBVAjXY2AgClxlYPAFM+Y2cNwCM7Rv9B6GyPXeFoAwam9AaI4bvQ1gRm4DxzUwA0jmEmcRAL9NDT3QN8Z2AAAAAElFTkSuQmCC);
+    max-width: 16px;
+    max-height: 16px;
+    border: 1px solid #444;
+}
+.close:hover
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQWEwY4BCp7TQAAAD9QTFRFVVVVX1ZWYVdXYlhYY1hYZVhYZ1lZaVtbx3JyyXJyz3R003V11HV11XZ21nZ213Z22Xd32nd323Z27nx8////wlGasAAAAAFiS0dEFJLfyTUAAABFSURBVBgZrcHHAYAwEANBcUc0iLT998rLpgHPSJ2whTSsqDpxxsGlan6weRc1abgn/WIHp5o4sHGqKjhHU1RRQsqCOvkAX/ECkjOk9XcAAAAASUVORK5CYII=);
+}
+.close:hover:active
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQWEwoUmkdYogAAADxQTFRFVVVVXFVVXlZWX1ZWYVZWYlZWY1hYqmNjrGNjsGRks2VltGRktGVltWVltmVlt2ZmuGZmuWRkx2ho////BD+CZgAAAAFiS0dEEwy7XJYAAABCSURBVBgZrcHHAYAwAAMxY2qIabf/sLwSFkCSfsJmaVhRcxC7cqqZbxKeRZ0D16SPd4jVuZIQqynEYyhqKJZc0E9eRawCYBY/lqAAAAAASUVORK5CYII=);
+}
+/*Pencil*/
+input.name::-moz-placeholder
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDESgwZbWJkAAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAqUExURQAAAC0tLTw8PGlpaW1tbY2NjbKysuTk5Pb29vr6+v///3h5enh5enh5etg+s7oAAAAOdFJOUwAAAAAAAAAAAAAAXqC7Pn67AAAAAAFiS0dECmjQ9FYAAABKSURBVAjXY2DADniVoIwrVwQgArm+DmDGtbArYAbvjNyUBSDGzfZrXhCB2mR0AYiK6+4QAe67UC08d69ZgQ3jOW2yAGLPqlVgCgABqhof30jOmgAAAABJRU5ErkJggg==);
+}
+}

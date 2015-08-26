@@ -1,0 +1,90 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("nyaa.se") 
+{
+  body
+  {
+    background: #333333;
+    color: #cccccc;
+  }
+  #topbar
+  {
+    background: #2d2d2d;
+    border-bottom: 1px solid #242424;
+  }
+  .content
+  {
+    background: #333333;
+    color: #cccccc;
+    border: 1px solid #242424;
+    border-radius: 2px;
+    width: 100%;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+  .trusted
+  {
+    background-color: #3C483F;
+  }
+  .tlistrow, .tlistsize
+  {
+    border-color: #242424;
+  }
+  .remake
+  {
+    background-color: #655B54;
+  }
+  a
+  {
+    color: #cccccc;
+  }
+  .tlistmn
+  {
+    color: #A5A5E7;
+  }
+  .tlistln
+  {
+    color: #EA7878;
+  }
+  .tlistsn
+  {
+    color: #A8DEA8;
+  }
+  img[src="http://files.nyaa.se/www-dl.png"]
+  {
+    opacity: 0;
+  }
+  a[title="Download"]
+  {
+    background: 
+url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAMAAADarb8dAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAA/4AAAP+AEy1dGxAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAFpQTFRF////qqqqxsbGxMTEz8/PycnJz8/Pzs7OysrKzc3Ny8vLzMzMy8vLzc3NzMzMzMzMzc3Ny8vLzMzMy8vLzMzMzMzMzc3Ny8vLy8vLzMzMzMzMzMzMzMzMzMzMUU1duQAAAB10Uk5TAAMJDRATIC8wOERGTmV4fX+AlZmcsLHBxtjn8vzpB2zPAAAAV0lEQVQI16WMSRKAIAwEB3fEfUPF/P+biqEUvNqXpKeSASwJXfR4+R/ksrTBJGXMQXUQMwt3UrOv0fPUWd9Sr3Uk2jPPIRZTuFU1N+3AU8FQgAF9gA5dn+fqDMvaMfB4AAAAAElFTkSuQmCC) 
+no-repeat;
+    padding: 4px !important;
+  }
+  .pagelink:hover
+  {
+    background-color: #EA7878;
+    color: #FFF;
+  }
+  a:hover
+  {
+    text-decoration: none;
+    color: #FFF;
+  }
+  #tabnav a
+  {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #CCC;
+  }
+  #tabnav a:hover
+  {
+    text-decoration: none;
+    background-color: #EA7878;
+    color: #FFF;
+  }
+  img[src*="http://files.nyaa.se/af"], .chatbox
+  {
+    display: none;
+  }
+}

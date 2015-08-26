@@ -1,0 +1,131 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("8chan.co") 
+{
+  body
+  {
+    background: #2d2d2d !important;
+    color: #eee !important;
+    font-size: 12pt !important;
+  }
+  a
+  {
+    text-decoration: none!important;
+  }
+  h1
+  {
+    color: #ea7878 !important;
+  }
+  form
+  {
+    margin-bottom: 0em !important;
+  }
+  div.post.reply
+  {
+    background: #2d2d2d !important;
+    border: 1px solid #242424 !important;
+    min-width: 98%;
+    max-width: 98%;
+  }
+  div.thread
+  {
+    background-color: #2c2c2c !important;
+    border: 1px solid #242424 !important;
+    margin-bottom: 10px !important;
+    padding: 10px !important;
+  }
+  form[action="/post.php"] table
+  {
+    background: #2c2c2c !important;
+    padding: 20px;
+    border: 1px solid #242424 !important;
+  }
+  form table tr th
+  {
+    background: #2d2d2d;
+    border: 1px solid #282828 !important;
+  }
+  input[type="text"], input[type="password"], textarea
+  {
+    border: none !important;
+    border-left: 2px solid #2d2d2d !important;
+    border-right: 2px solid #2d2d2d !important;
+  }
+  form table input
+  {
+    max-height: 20px !important;
+  }
+  input[type="submit"]
+  {
+    float: left !important;
+    margin-top: 0px;
+    border: none !important;
+  }
+  label[for="spoiler"]
+  {
+    float: right !important;
+    margin-top: 2px !important;
+  }
+  input[type="text"]:focus, input[type="password"]:focus, textarea:focus
+  {
+    border-left: 2px solid #ea7878 !important;
+  }
+  #favorite-star
+  {
+    margin-left: 10px !important;
+  }
+  .desktop-style div.boardlist:nth-child(1), div.pages
+  {
+    background-color: #333;
+    border: 1px solid #242424 !important;
+    padding: 2px !important;
+    color: #ddd !important;
+  }
+  #thread-links
+  {
+    float: left !important;
+    margin-left: 10px;
+  }
+  span#updater
+  {
+    float: right !important;
+    margin-top: -4px !important;
+    padding-bottom: 4px !important;
+  }
+  
+  
+  
+  p.intro a.email:hover span.name, p.intro span.capcode, p.intro a.capcode, p.intro a.nametag, 
+  a:hover, p.intro a.post_no:hover, div.post.reply div.body a
+  {
+    color: #FFF;
+  }
+  p.intro a.email span.name, a, a:visited, span.heading, p.intro span.subject, div.pages
+  {
+    color: #ccc;
+  }
+  p.intro span.name, span.quote
+  {
+    color: #ea7878;
+  }
+  
+  
+  .kwd, .tag
+  {
+    color: #ea7878;
+  }
+  .typ, .atn
+  {
+    color: #7878ea;
+  }
+  .str, .atv
+  {
+    color: #78ea78;
+  }
+  
+  hr, .unimportant.board-settings, div.blotter, footer, div.delete, .styles, div.boardlist.bottom,
+  div.banner, #treeview
+  {
+    display: none;
+  }
+}

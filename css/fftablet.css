@@ -1,0 +1,236 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("4chan.org") 
+{
+  .yotsuba-b:root #header-bar.dialog
+  {
+    background-color: #000;
+    padding-bottom: 5px;
+  }
+  #board-list
+  {
+    font-size: 16pt;
+  }
+  .yotsuba-b:root #header-bar, .yotsuba-b:root #notifications, .yotsuba-b:root #board-list a, .yotsuba-b:root #shortcuts a
+  {
+    color: #FFF !important;
+    font-size: 16pt;
+  }
+  #shortcuts
+  {
+    margin-top: -2px;
+  }
+  .fixed:root #header-bar
+  {
+    /*box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.6);*/
+    box-shadow: none;
+  }
+  .yotsuba-b:root .dialog
+  {
+    border: none;
+    background-color: #000;
+  }
+  .yotsuba-b:root .qr-link
+  {
+    border: none;
+    background: #0072c6;
+    color: #FFF;
+    border-radius: 0px;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: background-color 0.5s;
+  }
+  .yotsuba-b:root .qr-link:hover
+  {
+    background-color: #3695de;
+    color: #FFF !important;
+  }
+  .qr-link-container
+  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #qr
+  {
+    box-shadow: none;
+    border-radius: 0px;
+    overflow: hidden;
+    transition: all 1s;
+    padding: 10px;
+    opacity: 0.2;
+  }
+  #qr:hover, #qr:active
+  {
+    opacity: 1;
+  }
+  #qr .close
+  {
+    margin-top: 2px;
+    margin-left: 10px;
+    font-size: 12pt;
+    border: 2px solid #FFF;
+    border-radius: 100px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 3px;
+    color: #FFF !important;
+    transition: background-color 0.5s;
+  }
+  #qr .close:hover
+  {
+    background-color: #555 !important;
+  }
+  #qr .close:active
+  {
+    background-color: #FFF !important;
+  }
+  .persona
+  {
+    margin-top: 10px;
+  }
+  .move label
+  {
+    font-size: 14pt;
+    color: #FFF !important;
+  }
+  .field
+  {
+    margin-bottom: 10px;
+  }
+  .opContainer, .op
+  {
+    overflow: hidden !important;
+    
+  }
+  .opContainer
+  {
+    background-color: #FCFCFC;
+    padding: 5px;
+    border-top: 3px solid #1570A6;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  
+  div.post div.postInfo span.nameBlock span.name
+  {
+    color: #000;
+    font-weight: normal;
+    font-size: 14pt;
+  }
+  div.post div.postInfo span.subject
+  {
+    font-weight: normal;
+    color: #000;
+    font-size: 12pt;
+  }
+  div.reply, .yotsuba-b:root .inline
+  {
+    background-color: #FCFCFC;
+    border: none;
+    border-left: 3px solid #DDD;
+    padding-left: 6px;
+    display: block;
+    transition: border-color 0.5s;
+    margin-right: 36px;
+    overflow: hidden;
+  }
+  .reply:target, .reply.highlight
+  {
+    background-color: #F0F0F0 !important;
+    border: none !important;
+    border-left: 3px solid #1570A6 !important;
+    padding-left: 6px;
+    display: block;
+    transition: border-color 0.5s;
+  }
+  div.reply:hover, .yotsuba-b:root .inline:hover
+  {
+    border-left: 3px solid #1570A6;
+  }
+  .qphl
+  {
+    outline: none !important;
+    border-left: 3px solid #0072c6 !important;
+  }
+  div.post div.file div.fileText
+  {
+    -moz-box-ordinal-group: 2;
+  }
+  div.post div.file .fileThumb, .reply > .file > .fileText, div.post blockquote.postMessage
+  {
+    margin-left: 10px;
+  }
+  div.sideArrows
+  {
+    font-size: 14pt;
+    color: #0072c6;
+    padding-top: 2px;
+    padding-right: 5px;
+  }
+  div.post div.postInfo span.postNum a
+  {
+    color: #555;
+  }
+  div.post div.postInfo span.postNum a:hover, .posteruid .hand:hover
+  {
+    color: #222 !important;
+  }
+  div.post div.postInfo span.nameBlock span.postertrip
+  {
+    color: #DDD;
+  }
+  .quoteLink, .quotelink, .deadlink
+  {
+    color: #1570A6 !important;
+    text-decoration: none;
+  }
+  a, a:visited
+  {
+    color: #1570A6;
+    transition: color 0.4s;
+  }
+  a:hover
+  {
+    color: #083047 !important;
+  }
+  div#qp.dialog
+  {
+    background-color: #FFF !important;
+    padding: 5px;
+  }
+  div.post div.file .fileThumb
+  {
+    min-width: 0px;
+    max-width: 95%;
+    max-height: 95%;
+    overflow: hidden;
+  }
+  .expanded-image > .post > .file > .fileThumb > .full-image:not(#ihover)
+  {
+    max-width: 100%;
+  }
+  #menu, .dialog:not(#qr):not(#thread-watcher):not(#header-bar)
+  {
+    background-color: #FFF;
+    border-radius: 0px;
+  }
+  
+  
+  
+  
+  body
+  {
+    background: white;
+    color: #555;
+    font-family: Segoe UI, Noto Sans;
+  }
+  div.boardBanner, .center, div.desktop, #blotter, .aboveMidAd, .belowLeaderboard, .abovePostForm,
+  div.post div.postInfo input[type="checkbox"], .yotsuba-b:root .watch-thread-link, .stub, hr,
+  .op .fileText, div#absbot
+  {
+    display: none;
+  }
+}

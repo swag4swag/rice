@@ -1,0 +1,335 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/*Navbar styling*/
+#nav-bar
+{
+    z-index: 9999999999;
+    border: none;
+    background: none;
+    box-shadow: none !important;
+    padding: 0px;
+    opacity: 1 !important;
+    min-height: 38px !important;
+}
+#navigator-toolbox:after
+{
+    background-color: background !important;
+    box-shadow: none !important;
+}
+/*Integrates URLBar with Navbar*/
+#urlbar
+{
+    border: none;
+    padding-bottom: 2px;
+}
+#Tabstoolbar::after
+{
+    display: none;
+}
+
+/*Tabs container styling*/
+#tabbrowser-tabs > arrowscrollbox > scrollbox > box
+{
+    background-color: transparent !important;
+    overflow-y: visible;
+    max-width: 350px !important;
+    min-width: 350px !important;
+}
+#sidetabs-box
+{
+    max-width: 328px;
+    min-width: 328px;
+    margin-right: -276px;
+    padding: 2px;
+    margin-left: -17px;
+    padding: 0px !important;
+    pointer-events: none;
+    
+}
+.tabbrowser-tabs
+{
+    padding-top: 20px !important;
+    padding: 0px !important;
+    max-width: 4000px !important;
+    min-width: 4000px !important;
+}
+.tab-stack
+{
+    padding-top: 24px;
+    position: absolute ;
+    left: 1px;
+}
+#sidetabs-splitter
+{
+    display: none;
+}
+.tab-background
+{
+    display:none;
+}
+/*Disables the menu separator*/
+#PanelUI-button
+{
+    background-image: none;
+}
+
+
+
+
+
+
+/*Fixes lack of favicon on newtab*/
+.tab-icon-image:not([src]):not([pinned]){
+	display:block !important;
+}
+
+.tab-throbber:not([busy]),
+.tab-throbber[busy] + .tab-icon-image:not([src]):not([pinned]){
+    display:none !important;
+}
+
+/*Tab Styling*/
+.tabbrowser-tab
+{
+    pointer-events: none;
+    margin: 0px !important;
+    padding: 0px !important;
+    max-width: 328px !important;
+    min-width: 328px !important;
+    margin-right: -300px !important;
+    margin-top: -3px !important;
+    text-align: left;
+}
+/*Swaps label and close button - thanks offlineric*/
+.tabbrowser-tab .tab-close-button 
+{
+    -moz-box-ordinal-group: 3 !important;
+}
+.tabbrowser-tab .tab-label 
+{
+    -moz-box-ordinal-group: 4 !important;
+}
+
+.tabbrowser-tab[selected="true"]
+{
+    background: none !important;
+}
+
+.tabbrowser-tab[selected="true"]:hover .tab-close-button
+{
+    pointer-events: all;
+    z-index: 999 !important;
+    animation: closefadebutton 1s;
+    opacity: 1;
+}
+.tabbrowser-tab[selected="true"]:hover .tab-icon-image
+{
+    opacity: 0;
+    animation: iconfade 1s;
+}
+.tabbrowser-tab[selected="true"] .tab-content
+{
+    background-color: #444 !important;
+    border-left: 2px solid #ea7878;
+    margin-left: 0px;
+}
+.tab-content
+{   
+    pointer-events: all;
+    border-left: 2px solid transparent;
+    max-width: 28px;
+    min-width: 28px;
+    max-height: 24px;
+    min-height: 24px;
+    background-color: #333;
+    padding-left: 6px;
+    padding-bottom: 1px;
+    background-clip: padding-box;
+    transition: all 1s;
+    color: #ccc;
+    font-family: Droid Sans;
+    font-size: 13px;
+}
+.tab-content:hover
+{
+    max-width: 300px;
+    box-shadow: 3px 3px 3px #222;
+}
+.tab-close-button
+{
+    transform: translateX(-26px);
+    margin-right: -18px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s;
+}
+@keyframes closefadebutton
+{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes iconfade
+{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+.tab-icon-image
+{
+    margin-right: 2px;
+    animation: closefadebutton 1s;
+}
+/*New tab button*/
+.tabs-newtab-button
+{
+    margin-left: 4px !important;
+    margin-right: -4px !important;
+}
+/*I don't know what this does, someone fucking test this*/
+toolbar[type="menubar"][autohide="true"]
+{
+    z-index: 999999999;
+    padding: 4px;
+}
+
+
+
+
+
+/*Toolbar buttons*/
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1 > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1 > .toolbarbutton-badge-container > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1 > .toolbarbutton-icon
+{
+    border-radius: 0px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-badge-container > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-icon
+{
+
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+/*Icon hovers*/
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-badge-container > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):hover > .toolbarbutton-icon 
+{
+    background-image: none !important;
+    background-color: #555;
+    border: none !important;
+    box-shadow: none !important;
+}
+/*Pressed*/
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled=true]):hover:active > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1[open="true"] > .toolbarbutton-menubutton-dropmarker:not([disabled=true]) > .dropmarker-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):-moz-any([open],[checked],:hover:active) > .toolbarbutton-badge-container > .toolbarbutton-icon,
+:-moz-any(#TabsToolbar, #nav-bar) .toolbarbutton-1:not([disabled=true]):-moz-any([open],[checked],:hover:active) > .toolbarbutton-icon
+{
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: #333;
+}
+/*What the fuck does this do I don't know*/
+#main-window:not([customizing]) #back-button[disabled] > .toolbarbutton-icon
+{
+    box-shadow: none !important;
+}
+#back-button > .toolbarbutton-icon
+{
+    background-image: none !important;
+    width: 22px;
+    padding: 2px;
+}
+/*Icons*/
+.close-icon
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQbBh0jz/7AfQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAqUExURVVVVf///////////////////////////////////////////////////2urSu4AAAAOdFJOUwADCAxydXt+f4GEhoeb/L83BwAAAAFiS0dEAf8CLd4AAAA3SURBVAjXY2AgClxlYPAFM+Y2cNwCM7Rv9B6GyPXeFoAwam9AaI4bvQ1gRm4DxzUwA0jmEmcRAL9NDT3QN8Z2AAAAAElFTkSuQmCC);
+}
+.close-icon:hover
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQbBh4r6ggbjAAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAA/UExURVVVVf9mZv9xcf98fP95ef91df97e/+IiP+AgP+AgP+AgP+AgP+AgP+Bgf+AgP+AgP+Bgf+AgP9/f/+AgP///5V/WHUAAAAUdFJOUwAPEhQVGBseq663vb/AwcPGx8nmYRPL8AAAAAFiS0dEFJLfyTUAAABFSURBVBgZrcHHAYAwEANBcUc0iLT998rLpgHPSJ2whTSsqDpxxsGlan6weRc1abgn/WIHp5o4sHGqKjhHU1RRQsqCOvkAX/ECkjOk9XcAAAAASUVORK5CYII=);
+    animation: closehover 0.5s;
+}
+.close-icon:hover:active
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQbBiAm1Xx8TAAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAA8UExURVVVVf9VVf9oaP9mZv9jY/9iYv95ef9xcf9wcP9xcf9ycv9wcP9ycv9xcf9xcf9ycv9ycv9vb/9xcf///2Uyh+IAAAATdFJOUwALDg8SFBV/g4mNj4+QkpOUlqso+DsjAAAAAWJLR0QTDLtclgAAAEJJREFUGBmtwccBgDAAAzFjaohpt/+wvBIWQJJ+wmZpWFFzELtyqplvEp5FnQPXpI93iNW5khCrKcRjKGoollzQT15FrAJgFj+WoAAAAABJRU5ErkJggg==);
+}
+@keyframes closehover
+{
+    from {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQWEwYYP0RbhQAAAC1QTFRFVVVVV1dXWlpaXV1doaGho6Ojp6enqampqqqqq6urra2trq6ur6+vvLy8////GW2F2gAAAAFiS0dEDm+9ME8AAAA3SURBVAjXY2AgClxlYPAFM+Y2cNwCM7Rv9B6GyPXeFoAwam9AaI4bvQ1gRm4DxzUwA0jmEmcRAL9NDT3QN8Z2AAAAAElFTkSuQmCC);}
+    to {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQWEwY4BCp7TQAAAD9QTFRFVVVVX1ZWYVdXYlhYY1hYZVhYZ1lZaVtbx3JyyXJyz3R003V11HV11XZ21nZ213Z22Xd32nd323Z27nx8////wlGasAAAAAFiS0dEFJLfyTUAAABFSURBVBgZrcHHAYAwEANBcUc0iLT998rLpgHPSJ2whTSsqDpxxsGlan6weRc1abgn/WIHp5o4sHGqKjhHU1RRQsqCOvkAX/ECkjOk9XcAAAAASUVORK5CYII=);}
+    
+}
+#PanelUI-menu-button
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAMmscNU3AAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAlSURBVDjLY2AYBXQDjOgC/////0+URkZGFL1Mo14b9doooAsAAHclDAor5izsAAAAAElFTkSuQmCC) !important;
+    -moz-image-region: rect(0px, 14px, 18px, 4px);
+}
+#downloads-button[cui-areatype="toolbar"][attention] > #downloads-indicator-anchor > #downloads-indicator-icon
+{
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQBAA0zo6IJAQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURXh5ev////9zc7A82TwAAAACdFJOUwAAdpPNOAAAAAFiS0dEAf8CLd4AAAAoSURBVAjXYwgFggAGnCTTClY4GbYSIaK1qhVIRq1CiDAsYMVjDogEABvVHPhzCNpFAAAAAElFTkSuQmCC);
+}
+#downloads-button[cui-areatype="toolbar"]
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAQMAAABsABwUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAQpbj3figAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAGUExURQAAAP///6XZn90AAAABdFJOUwBA5thmAAAAAWJLR0QAiAUdSAAAAB1JREFUCNdjYMACGB+gYvYfDAzMHyBshgPYdDAAAADIBxgU0l0nAAAAAElFTkSuQmCC) !important;
+    -moz-image-region: rect(0px, 14px, 18px, 4px);
+}
+#downloads-button[cui-areatype="toolbar"] > #downloads-indicator-anchor > #downloads-indicator-icon
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAQMAAABsABwUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAQpbj3figAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAGUExURQAAAP///6XZn90AAAABdFJOUwBA5thmAAAAAWJLR0QAiAUdSAAAAB1JREFUCNdjYMACGB+gYvYfDAzMHyBshgPYdDAAAADIBxgU0l0nAAAAAElFTkSuQmCC) !important;
+    min-width: 12px;
+    max-width: 12px;
+    
+}
+#downloads-button[cui-areatype="menu-panel"][attention]
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQBAA0zo6IJAQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURXh5ev////9zc7A82TwAAAACdFJOUwAAdpPNOAAAAAFiS0dEAf8CLd4AAAAoSURBVAjXYwgFggAGnCTTClY4GbYSIaK1qhVIRq1CiDAsYMVjDogEABvVHPhzCNpFAAAAAElFTkSuQmCC);
+}
+#back-button
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAQMAAABsABwUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAYmzLSgmQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAGUExURQAAAP///6XZn90AAAABdFJOUwBA5thmAAAAAWJLR0QAiAUdSAAAAB5JREFUCNdjYMAGGhgYGIGYGYjZf0AwM1QMJIcFAAC1NgUH61j1lAAAAABJRU5ErkJggg==);
+    -moz-image-region: rect(0px, 18px, 18px, 0px);
+}
+#back-button:hover
+{
+    /*DEVHERE*/
+}
+#forward-button
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAcICXmcFwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAA5SURBVDjLY2AYBYML/P///z8hNUzUMoyJWi5jJMd2RkZGRopchNdwUr2EzTUkuwiXIVSN/lFARwAA4YQX/3BZklgAAAAASUVORK5CYII=);
+    -moz-image-region: rect(0px, 18px, 18px, 0px);
+}
+#tabview-button
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAc7tqn9AQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAzSURBVDjLY2AYBYQAIzbB/////0dRxMjIiCzGyMiIoY+JWi4afAbRL7DRA3o0sEcBLQEArkEQDxXfmlYAAAAASUVORK5CYII=);
+    -moz-image-region: rect(0px, 14px, 18px, 4px);
+}
+/*Down Notifs*/
+#downloads-notification-anchor[notification="start"] > #downloads-indicator-notification
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAQMAAAD58POIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAgvK+s1swAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAGUExURQAAAP///6XZn90AAAABdFJOUwBA5thmAAAAAWJLR0QAiAUdSAAAANtJREFUSMft1bENwyAQRuFnUVB6BI/CaGY0RvEIlC5QSIPx/ZcmZRT5Ol71CU4CfnrW3nuvT3jCE/4mxC5TCBoyiwZAzi9gt6EByYYT2Gyol+Gaw0MKKCSDQkAhL1BIA4WcoJB6X8bNEEgBhWRQyLhRxzCQNkJShoFU+yo3w0DKCEEZBjKf1jEmpM2QlDEhVdfjZkxImSEoY0LMjjnGgDQTkjIG5GNPDxOiMgYkm7A4BjgG7MqApAzYlAGrMiAqA4IyYHEMcAzYmwvpdGGr/gs+XIjFhZBdWL7/4N9R19KWgWOndAAAAABJRU5ErkJggg==);
+}
+#downloads-notification-anchor[notification="finish"] > #downloads-indicator-notification
+{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQBABwcW6oXSAAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAMUExURQAAAP9zc/9zc////6B7f6sAAAACdFJOUwAAdpPNOAAAAAFiS0dEAxEMTPIAAAETSURBVFjD7dS9DQIxDIbhUDAC+zACBaFgBPZhBBfclFz+bcf+CiSQkOL23uJRLnEIv5zI5o+Drc8KVrCCFaxgBSv4UhAfGxiK4XRHwfMajjcUxEs4RPD9Fc8YQUmLEDshQMROCAiRCQhB5cB8RCYgRCYARCX4CGr/zENUgo+oBBfRCR6CxrWxEZ3gITrBQTCCjSB+cy0EI9gIRjARgmAhSL6uGSEIFkIQDIQizAjSD1wjFGFGKMKEmAgaQfOOkYiJoBETQSEMgkSQteY4wiBIhEEQCJPAEWRv2oEwCRxhEhjCIQyEQxgIhzAQDqEjXEJDuISGcAkN4RIqAhAKAhAKAhAKAhAyAhISAhISAhISAhI+mjfCtzdsI0ft4AAAAABJRU5ErkJggg==);
+}
+#urlbar > toolbarbutton
+{
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqAgMAAAC4rSHIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQTFAoKUtmDdgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURQAAAP///////3N4pWMAAAACdFJOUwCKe/6nBgAAAAFiS0dEAIgFHUgAAAA+SURBVBjTY2AgEogwOoBpplUNDJJsQHYDkA0k2CKBgguAbKYFDIxLGBhWrYCII9gMCDVIepHNpCYYdSdRAAB/UCUDldB95gAAAABJRU5ErkJggg==)
+}
+/*Change highlight of refresh button*/
+#urlbar-reload-button:not([disabled]):hover, #urlbar-go-button:hover, #urlbar-stop-button:not([disabled]):hover
+{
+    background-image: radial-gradient(circle closest-side, rgba(234, 120, 120, 0.2), hsla(200,100%,70%,0));
+}
+#urlbar-reload-button:not([disabled]):hover:active, #urlbar-go-button:hover:active, #urlbar-stop-button:hover:active
+{
+    background-image: radial-gradient(circle closest-side, rgba(234, 120, 120, 0.1), hsla(200,100%,60%,0))
+}

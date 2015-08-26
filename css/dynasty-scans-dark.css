@@ -1,0 +1,225 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("dynasty-scans.com") 
+{
+  body
+  {
+    background: #222 !important;
+    color: #ccc;
+  }
+  .pagination ul
+  {
+    box-shadow: none;
+    background-color: #333;
+    border: none !important;
+    border-radius: 0px !important;
+  }
+  .pagination ul > li:first-child > a, .pagination ul > li:first-child > span
+    {
+      border: 1px solid #444;
+      border-bottom: 1px solid #ea7878;
+      box-shadow: none !important;
+      border-radius: 0px !important;
+      background-color: #555;
+    }
+  .pagination ul > li > a, .pagination ul > li > span
+  {
+    border: 1px solid #444;
+    
+      box-shadow: none !important;
+      border-radius: 0px !important;
+      background-color: #555;
+  }
+  body, a, .thumbnail .caption
+  {
+    color: #ccc;
+  }
+  a:hover, .nav > li > a:hover, .nav > li > a:focus 
+    {
+      color: #eee;
+      background-color: transparent;
+      
+    }
+  .nav > li > a
+  {
+    text-shadow: none !important;
+  }
+  #main.chapters .chapter,
+  ul.cover-list a.thumbnail,
+  .tag-images .thumbnail
+  {
+    border: none;
+    border-left: 3px solid #555 !important;
+    background-color: #555;
+    border-radius: 0px;
+  }
+  #main.chapters .chapter:hover,
+  ul.cover-list a.thumbnail:hover,
+  .tag-images .thumbnail:hover
+  {
+    border: none;
+    border-left: 3px solid #ea7878 !important;
+    box-shadow: none !important;
+  }
+  #main.chapters .chapter .title
+  {
+    color: #ccc;
+  }
+  #main.chapters .chapter .title small, #main.chapters .chapter
+  {
+    color: #aaa;
+  }
+  .navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li > a:hover
+  {
+    background-color: #333;
+  }
+  #main.chapters.show #chapter-actions .btn-toolbar
+  {
+    margin-top: 5px;
+  }
+  #chapter-details
+  {
+    width: 145%;
+    margin-bottom: -15px;
+  }
+  .brand:after
+  {
+    content: "Dynasty Reader";
+  }
+  .brand
+  {
+    margin-top: 5px;
+    padding-left: 6px !important;
+  }
+  .navbar .nav > li > a
+  {
+    padding: 5px !important;
+  }
+  .brand img
+  {
+    display: none;
+  }
+  .navbar-search .search-query
+  {
+    border: none !important;
+    border-radius: 0px !important;
+    padding: 0px !important;
+    margin-right: 15px;
+    margin-top: -6px;
+  }
+  .navbar-inner
+  {
+    min-height: 30px;
+    background: #444 !important;
+    box-shadow: none;
+    margin-bottom: -20px;
+  }
+  .btn
+  {
+    border: none !important;
+    border-right: 1px solid #333 !important;
+    border-radius: 0px !important;
+  }
+  #content.container
+  {
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 0px;
+    border-bottom: 2px solid #ea7878;
+    background-color: #444;
+    
+  }
+  .navbar-inverse .divider-vertical
+  {
+    display: none;
+  }
+  #reader
+  {
+    padding: 0px !important;
+  }
+  #reader .pages-list
+  {
+    top: 180px;
+    position: fixed;
+    left: -90px;
+    z-index: 999;
+    bottom: auto;
+    background-color: #555;
+    color: #444;
+    box-shadow: 0px 0px 5px #000;
+    transition: all 1s;
+  }
+  #reader .pages-list:hover
+  {
+    left: 0px;
+    background-color: #555;
+    height: auto;
+  }
+  #reader #image
+  {
+    max-width: 1010px;
+    max-height: 1800px;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 0px;
+    background: #555;
+    border: none;
+  }
+  #reader #image img
+  {
+    max-height: 1800px !important;
+  }
+  .alert-info
+  {
+    background-color: #555;
+    border: none;
+    color: #ccc;
+    text-shadow: none;
+  }
+  .navbar-inverse .navbar-search .search-query 
+  {
+    background-color: #333;
+    border: none;
+    box-shadow: none;
+  }
+  .navbar-inverse .navbar-search .search-query:focus, .navbar-inverse .navbar-search .search-query.focused
+  {
+    background-color: #333;
+    color: #ccc;
+    text-shadow: none;
+  }
+  .pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span
+    {
+      background-color: #666;
+    }
+  .nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus
+    {
+      background-color: #555;
+    }
+  .nav-pills > li > a
+  {
+    border-radius: 0;
+  }
+  .btn.active, .btn:active
+  {
+    box-shadow: none !important;
+    border: none !important;
+    background: #DDD !important;
+  }
+  .btn
+  {
+    background: #CCC !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  #reader .pages-list a
+  {
+    color: #CCC;
+  }
+  #reader .pages-list a:hover
+    {
+      background: rgba(234,120,120, 0.5);
+    }
+  #reader .pages-list a.active
+  {
+     background: rgb(234,120,120);
+  }
+}
