@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+
+import os
+import requests
+import time
+import sys
+import re
+import imghdr
+import unicodedata
+from bs4 import BeautifulSoup
+
+class BadStatus(Exception):
+    '''Exception for when http status is not 200. Takes the status as required input.'''
+    def __init__(self, status):
+        self.status = status
+
+    def __str__(self):
+        return repr(self.status)
+
+
+def GetGallery(gallery_url): #Takes url string
+    fail = 0
+    while fail < 3:
+        try:
+            r = s.get(gallery_url, cookies=cookies, headers=headers)
+            break
+        except requests.exceptions.RequestException:
+            fail += 1
+            print("Failed to load page (attempt %d / 3). Retrying in 10s..." % fail)
+            time.sleep(10)
+    if fail == 3:
+        sys.exit("Fatal error: Exceeded max retry attempts for page load")
+        
+    return r 
+
+def PageInfo(gallery_url): #Takes url string
+    if re.match('.*\/s\/.*', gallery_url):
+        return "Page"
+    elif re.match('.*\/g\/.*', gallery_url):
+        return "Gallery"
+    else:
+        return "Overview"
+
+
+def DownloadImage(image_url, image_name): #Takes strings
+    '''Downloads an image. Takes a dictionary containing image name as key and URL as value.'''
+    global directory
+    global ovdirectory
+    r = s.get(image_url, cookies=cookies, headers=headers, stream=True)
+    size = int(r.headers['content-length'])
+    fulldir = ovdirectory + directory
+    if r.status_code == 200:
+        with open(os.path.join(fulldir, image_name), 'wb') as f:
+            for chunk in r.iter_content(1024):
+                f.write(chunk)
+    else:
+        raise BadStatus(r.status_code)
+        
+    try: 
+        if image_name[-3:] != imghdr.what(directory + '/' + image_name):
+            os.rename(directory + '/' + image_name, directory + '/' + image_name[:-3] + imghdr.what(directory + '/' + image_name))
+    except TypeError:
+        print("OH SHIT")
+        
+def GetImageURL(gallery): #Takes Beautifulsoup object
+    fullimg = gallery.findAll('a', href=re.compile('^http://g.e-hentai.org/fullimg.php'))
+    image_url = ""
+    for links in fullimg:
+            fimglink = links.get('href')
+    try:
+            fimglink
+    except NameError:
+        image_url = gallery.find(id="img")['src']
+        print("Not high res - using H@H")
+    else:
+        if fimglink != []:
+            image_url = fimglink
+            print("High res - using ExH servers")
+        else:
+            image_url = gallery.find(id="img")['src']
+            print("Not high res - using H@H")
+    return image_url
+    
+    
+def SetDirectory(gallery):
+    global directory
+    directory = gallery.find('title').string
+    if not os.path.isdir(ovdirectory + directory):
+        os.makedirs(ovdirectory + directory)
+
+def PageLoop(gallery): #Takes Beautifulsoup object
+    global stop
+    imagenum = 0
+    SetDirectory(gallery)
+    
+    while gallery:
+        name = FindName(gallery)
+        print(name)
+        imgurl = GetImageURL(gallery)
+        print(imgurl)
+        
+        try:
+            DownloadImage(imgurl, name)
+        except (requests.exceptions.RequestException, BadStatus):
+            print("Error: Could not download image. Will try again later.")
+            failnames.append(name)
+            failurls.append(imgurl)
+        
+        gallery = NextGallery(gallery)
+        imagenum += 1
+        
+        if imagenum == stop:
+            gallery = False
+    
+    for i in range(0, len(failnames)):
+        try:
+            DownloadImage(failurls[i], failnames[i])
+        except (requests.exceptions.RequestException, BadStatus):
+            print("Error: Could not download image. Will try again later.")
+            death.append(failnames[i] + " - " + failurls[i])
+            
+    print(death)
+
+def NextGallery(page): #Takes a Beautifulsoup object
+    '''Ensures a next page exists and if so returns the URL, else False'''
+    new = page.find(id="next")['href']
+    newpage = BeautifulSoup(GetGallery(new).text)
+    if newpage != page:
+        return newpage
+    else:
+        return False
+    
+    
+def FindName(imagepage): #Takes Beautifulsoup object
+    imgname = imagepage.findAll('div', {'id' : 'i4'})[0].find('div').string
+    imgname = re.sub('\ ::\ .*', '', imgname)
+    return imgname
+
+
+def NextOverview(page): #Takes a Beautifulsoup object
+    npitem = page.findAll('a', text=re.compile('>'))
+    try:
+        newpageurl = npitem[0].get('href')
+        newpage = BeautifulSoup(GetGallery(newpageurl).text)
+        return newpage
+    except IndexError:
+        return False
+
+def GetGalleryURLs(overview):
+    
+    while overview:
+        galinfos = overview.findAll('div', {'class' : 'it5'})
+        urls = []
+        for i in galinfos:
+            a = i.find('a')
+            urls.append(a['href'])
+        overview = NextOverview(overview)
+    
+    print(urls)
+    return urls
+
+def DownloadGallery(gallery):
+    first = gallery.find('a', href=re.compile('^http://g.e-hentai.org/s/'))
+    furl = first.get('href')
+    PageLoop(BeautifulSoup(GetGallery(furl).text))
+
+
+
+global directory
+global ovdirectory
+global stop
+failnames = []
+failurls = []
+death = []
+directory = ''
+ovdirectory = ''
+cmdurl = ""
+gallery_url = ''
+try:
+    gallery_url = sys.argv[1]
+except IndexError:
+    print("Supply me a URL, come on")
+    exit(0)
+
+try:
+    stop = sys.argv[2]
+except IndexError:
+    stop = 999999
+
+try:
+    ovdirectory = sys.argv[3]
+except IndexError:
+    ovdirectory = ""
+s = requests.Session()
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0'}
+cookies = dict(ipb_member_id='566336', ipb_pass_hash='67cf7eb5eafbd033e2c7d36f7e664385', yay='louder')
+
+PageID = PageInfo(gallery_url)
+m_gallery = BeautifulSoup(GetGallery(gallery_url).text)
+
+if PageID == "Overview":
+    if ovdirectory == "":
+        ovdirectory = "DownloadRun/"
+    else:
+        ovdirectory += "/DownloadRun/"
+    gal_urls = GetGalleryURLs(m_gallery)
+    for i in gal_urls:
+        DownloadGallery(BeautifulSoup(GetGallery(i).text))
+elif PageID == "Gallery":
+    DownloadGallery(m_gallery)
+elif PageID == "Page":
+    PageLoop(m_gallery)

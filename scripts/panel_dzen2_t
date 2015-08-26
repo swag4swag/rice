@@ -1,0 +1,53 @@
+#!/bin/bash
+
+font_family='DejaVu Sans'
+font_size=14
+
+. panel_colors-dzen2
+
+screen_width=1920
+NORMIFS=$IFS
+FIELDIFS=':'
+PADDING='  '
+
+while getopts 'f:s:' opt ; do
+	case "$opt" in
+		f)
+			font_family=$OPTARG
+			;;
+		s)
+			font_size=$OPTARG
+			;;
+	esac
+done
+
+shift $((OPTIND - 1))
+
+while read -r line ; do
+	case $line in
+        T*)
+			# xtitle output
+			title="^fg($COLOR_TITLE_FG)^bg($COLOR_TITLE_BG)${PADDING}${line#?}${PADDING}^fg()^bg()"
+			;;
+
+		W*)
+			# bspwm internal state
+			wm_infos="$PADDING"
+			IFS=$FIELDIFS
+			set -- ${line#?}
+			while [ $# -gt 0 ] ; do
+				item=$1
+				case $item in
+					L*)
+						# layout
+						layout=$(printf "%s" "${item#?}" | sed 's/^\(.\).*/\U\1/')
+						wm_infos="${wm_infos}^fg()^bg()^fg($COLOR_LAYOUT_FG)^bg($COLOR_LAYOUT_BG)^ca(1, bspc desktop -l next)${PADDING}$layout${PADDING}^ca()"
+						;;
+				esac
+				shift
+			done
+			IFS=$NORMIFS
+			;;
+	esac
+	printf "%s\n" "$wm_infos$title"
+done

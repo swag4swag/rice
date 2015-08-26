@@ -1,0 +1,80 @@
+#!/bin/bash
+
+bspc config border_width 10
+bspc config window_gap 12
+bspc config bottom_padding 0
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
+bspc config focused_border_color "#ebebeb"
+bspc config active_border_color "#ebebeb"
+bspc config normal_border_color "#ebebeb"
+bspc config focused_sticky_border_color '#ebebeb'
+
+xbacklight -set 40
+
+export DESKTOP_SESSION="gnome"
+
+mons=1
+mon[0]="eDP1"
+
+xrandr | grep "HDMI1 connected "
+if [ $? -eq 0 ]; then
+  mons=$(($mons+1))
+  mon[$((mons-1))]="HDMI1"
+fi
+xrandr | grep "VGA1 connected "
+if [ $? -eq 0 ]; then
+  mons=$(($mons+1))
+  mon[$((mons-1))]="VGA1"
+fi
+
+if [ $mons -eq 1 ]; then
+  bspc monitor ${mon[0]} -d 1 2 3 4 5 6 7 8 9
+elif [ $mons -eq 2 ]; then
+  bspc monitor ${mon[0]} -d 1 2 3 4
+  bspc monitor ${mon[1]} -d 5 6 7 8
+  #    xrandr --output ${mon[1]} --mode 1920x1080 --pos 0x0 --rotate right --output ${mon[0]} --mode 1920x1080 --pos 1080x840 --rotate normal
+  xrandr --output ${mon[1]} --mode 1920x1080 --left-of ${mon[0]} --output ${mon[0]} --mode 1920x1080 --rotate normal
+  xrandr --output ${mon[1]} --mode 1920x1080 --above ${mon[0]}
+  #    bspc config -m ${mon[1]} bottom_padding 38
+elif [ $mons -eq 3 ]; then
+  bspc monitor ${mon[0]} -d 1 2 3
+  bspc monitor ${mon[1]} -d 4 5 6
+  bspc monitor ${mon[2]} -d 7 8 9
+  xrandr --output ${mon[1]} --above ${mon[0]} --output ${mon[2]} --rotate right --left-of ${mon[1]}
+fi
+
+bspc config -m ${mon[0]} bottom_padding 38
+
+if ! [ -e /tmp/bspwm ]; then
+  mkdir /tmp/bspwm
+fi
+
+echo 38 > /tmp/bspwm/bpad
+echo 0 > /tmp/bspwm/tpad
+
+pulseaudio -D &
+amixer sset Master 40%
+amixer sset Master unmute
+compton &
+sxhkd &
+volumeicon &
+nm-applet &
+nitrogen --restore
+#panel $mons &
+panel 1 &
+lxappearance &
+sleep 1
+EPYTHON="python2.7" kupfer &
+tint2 &
+dunst &
+clipit --no-icon &
+xbacklight -set 40
+docky &
+pkill lxappearance

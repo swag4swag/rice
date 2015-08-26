@@ -1,0 +1,164 @@
+#┏┓ ┏━┓┏━┓╻ ╻┏┳┓   ╻ ╻┏━┓╺┳╸╻┏ ┏━╸╻ ╻┏━┓
+#┣┻┓┗━┓┣━┛┃╻┃┃┃┃   ┣━┫┃ ┃ ┃ ┣┻┓┣╸ ┗┳┛┗━┓
+#┗━┛┗━┛╹  ┗┻┛╹ ╹   ╹ ╹┗━┛ ╹ ╹ ╹┗━╸ ╹ ┗━┛
+
+# exits
+super + alt + Escape
+	pkill panel && bspc quit
+
+# fullscreen/tile
+super + t
+	bspc desktop -l next
+
+# equalizes window areas
+super + b
+	bspc desktop -B
+
+# toggle floating with s, fullscreen/tile with f
+super + {s,f}
+	bspc window -t {floating,fullscreen}
+
+# ???
+super + {grave,Tab}
+	bspc {window,desktop} -f last
+
+# switches windows
+super + apostrophe
+	bspc window -s last
+
+# useless shit
+super + {o,i}
+	bspc control --record-history off; \
+	bspc window {older,newer} -f; \
+	bspc control --record-history on
+
+# useless
+super + m
+	bspc window -s biggest
+
+# moves windows
+super + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right}
+
+# useless
+super + {_,shift + }c
+	bspc window -f {next,prev}
+
+# useless
+super + {comma,period}
+	bspc desktop -C {backward,forward}
+
+# switches desktops
+super + bracket{left,right}
+	bspc desktop -f {prev,next}
+
+# manual tiling
+super + ctrl + {a,s,w,d}
+	bspc window -p {left,down,up,right}
+
+# resize windows
+super + alt + {h,j,k,l}
+	bspc window -e {left -10,down +10,up -10,right +10}
+
+# resize windows
+super + alt + shift + {h,j,k,l}
+	bspc window -e {right -10,up +10,down -10,left +10}
+
+# useless
+super + ctrl + {1-9}
+	bspc window -r 0.{1-9}
+
+# useless
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,window -d} ^{1-9,10}
+
+# mouse clicks
+~button1
+	bspc pointer -g focus
+
+# resizing with mouse
+super + button{1-3}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+# clicking
+super + !button{1-3}
+	bspc pointer -t %i %i
+
+# clicking
+super + @button{1-3}
+	bspc pointer -u
+
+# increase/decrease window gap
+ctrl + {comma,period}
+	{downgap, upgap}
+
+# increase/decrease window padding
+ctrl + shift + {comma, period}
+    {downpadding, uppadding}
+
+# close window
+ctrl + q
+    bspc window -c
+
+# screenshot
+#	scrot '/home/swag/Pictures/Screenshot from %Y-%m-%d %H:%M:%S.png'
+Print
+    gnome-screenshot
+
+# screenshot of window
+#	scrot -s '/home/swag/Pictures/Screenshot from %Y-%m-%d %H:%M:%S.png'
+alt + Print
+    gnome-screenshot -wb
+
+# screenshot of arbitrary area
+# scrot -s '/home/swag/Pictures/Screenshot from %Y-%m-%d %H:%M:%S.png'
+shift + Print
+    gnome-screenshot -a
+
+# opens terminal
+super + Return
+	gnome-terminal
+
+super + KP_1
+	firefox-nightly
+# opens dmenu
+super + space
+	dmr
+
+# opens kupfer
+Menu
+	EPYTHON="python2.7" kupfer
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# brightness + notifications
+super + XF86MonBrightnessUp
+    xbacklight -inc 20
+
+XF86MonBrightnessUp
+	xbacklight -inc 2
+
+
+XF86MonBrightnessDown
+	xbacklight -time 0 -dec 2
+
+super + XF86MonBrightnessDown
+	xbacklight -time 0 -dec 20
+
+
+#┏┳┓┏━┓╺┳━┓
+#┃┃┃┣━┛ ┃ ┃
+#╹ ╹╹  ╺┻━┛
+alt + p
+    mpcn play
+alt + s
+    mpc pause && pkill mpdnotif
+alt + n
+    mpcn next
+alt + b
+    mpcn prev
+
+alt + w 
+    agariow

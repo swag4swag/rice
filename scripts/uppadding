@@ -1,0 +1,21 @@
+#!/bin/sh
+
+tpad=$(cat /tmp/bspwm/tpad)
+bpad=$(cat /tmp/bspwm/bpad)
+
+for i in 1 2 3 4 5
+do
+    tpad=$(($tpad+2))
+    bpad=$(($bpad+2))
+
+    bspc config top_padding $tpad
+    bspc config right_padding $tpad
+    bspc config left_padding $tpad
+
+    bspc config -m HDMI1 bottom_padding $tpad
+    bspc config -m VGA1 bottom_padding $tpad
+    bspc config -m eDP1 bottom_padding $bpad
+done
+
+echo $tpad > /tmp/bspwm/tpad
+echo $bpad > /tmp/bspwm/bpad

@@ -1,0 +1,4 @@
+#!/bin/sh
+time=$(date +%l:%M\ %p)
+dates=$(date +%A,\ %B\ %d,\ %Y)
+notify-send -i date "$time" "$dates"

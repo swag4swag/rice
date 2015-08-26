@@ -1,0 +1,69 @@
+#!/bin/bash
+
+bspc config border_width 1
+bspc config window_gap 12
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+
+bspc config bottom_padding 0
+
+bspc config focused_border_color "#DDDDDD"
+bspc config active_border_color "#FFFFFF"
+bspc config normal_border_color "#FFFFFF"
+bspc config focused_sticky_border_color '#DDDDDD'
+
+xbacklight -set 40
+
+export DESKTOP_SESSION="gnome"
+
+vl=true
+xrandr | grep "HDMI1 connected "
+if [ $? -eq 0 ]; then
+	bspc monitor HDMI1 -d 4 5 6
+	vl=false;
+fi
+xrandr | grep "VGA1 connected "
+if [ $? -eq 0 ]; then
+	bspc monitor VGA1 -d 7 8 9
+	vl=false
+fi
+
+if $vl; then
+	bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9
+else
+	bspc monitor eDP1 -d 1 2 3
+fi
+
+bspc config -m eDP1 bottom_padding 28
+
+if ! [ -e /tmp/bspwm ]; then
+    mkdir /tmp/bspwm
+fi
+
+echo 28 > /tmp/bspwm/bpad
+echo 0 > /tmp/bspwm/tpad
+
+xrandr --output VGA1 --above eDP1 
+xrandr --output HDMI1 --rotate right --left-of VGA1
+
+amixer sset Master unmute
+compton &
+
+volumeicon &
+nm-applet &
+nitrogen --restore
+panel &
+lxappearance &
+sleep 0.2
+docky &
+sleep 1
+pkill lxappearance
+EPYTHON="python2.7" kupfer &
+sxhkd &
+tint2 &
+dunst &
+clipit --no-icon &
+xbacklight -set 40

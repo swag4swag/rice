@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+one=$(curl http://adaway.org/hosts.txt | awk '/localhost/{p=1;next}{if(p){print}}')
+two=$(curl http://hosts-file.net/.%5Cad_servers.txt | awk '/localhost/{p=1;next}{if(p){print}}')
+three=$(curl "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext")
+four=$(curl http://winhelp2002.mvps.org/hosts.txt | awk '/localhost/{p=1;next}{if(p){print}}' | sed 's/0.0.0.0/127.0.0.1/')
+host=$(cat /etc/bhosts)
+thost=$(echo $one$two$three$four | sed 's/	/\ /' | sed '/^\#/d' | sort | sed '$!N; /^\(.*\)\n\1$/!P; D')
+host=$host$thost
+
+echo $host | sudo tee /etc/hosts

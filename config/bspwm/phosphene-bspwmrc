@@ -1,0 +1,80 @@
+#!/bin/bash
+
+bspc config border_width 1
+bspc config window_gap 12
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+
+bspc config bottom_padding 0
+
+bspc config focused_border_color "#FFFFFF"
+bspc config active_border_color "#E8EAED"
+bspc config normal_border_color "#E8EAED"
+bspc config focused_sticky_border_color '#3C4C5C'
+
+xbacklight -set 40
+
+export DESKTOP_SESSION="gnome"
+
+vl=true
+himon=0
+xrandr | grep "HDMI1 connected "
+if [ $? -eq 0 ]; then
+	bspc monitor HDMI1 -d I II III
+	((himon+=1))
+	vl=false;
+fi
+xrandr | grep "VGA1 connected "
+if [ $? -eq 0 ]; then
+	bspc monitor VGA1 -d 1 2 3
+	((himon+=1))
+	vl=false
+fi
+
+if $vl; then
+	bspc monitor eDP1 -d I II III IV V VI VII VIII
+	bspc config right_padding 82
+else
+	bspc monitor eDP1 -d A B C
+	bspc config -m 2 right_padding 82
+fi
+
+if [ "$himon" = "0" ]; then
+	bspc config bottom_padding 28
+else
+	bspc config -m $himon bottom_padding 28
+fi
+
+if ! [ -e /tmp/bspwm ]; then
+    mkdir /tmp/bspwm
+fi
+
+echo 28 > /tmp/bspwm/bpad
+echo 0 > /tmp/bspwm/tpad
+
+amixer sset Master unmute
+compton &
+
+
+if ( cat /proc/acpi/button/lid/LID0/state | grep open > /dev/null ); then
+	xrandr --output VGA1 --above eDP1 && xrandr --output HDMI1 --rotate right --left-of VGA1
+else
+	~/.screenlayout/twomonitor.sh
+fi
+
+
+
+volumeicon &
+nm-applet &
+nitrogen --restore 
+panel &
+lxappearance & docky & sleep 1  && pkill lxappearance
+sxhkd &
+tint2 &
+dunst &
+EPYTHON="python2.7" kupfer &
+clipit --no-icon &
+xbacklight -set 40

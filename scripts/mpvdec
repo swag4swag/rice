@@ -1,0 +1,13 @@
+#!/bin/bash
+
+psu=$(cat /sys/class/power_supply/ACAD/online)
+if [ $psu == 0 ] 
+then
+	echo "Running mpv on Integrated GPU"
+  xrandr --output HDMI1 --mode 1920x1080 --rate 23.98
+	mpv --profile=Battery "$@"
+  xrandr --output HDMI1 --mode 1920x1080 --rate 60.0
+else
+	echo "Running mpv on Discrete GPU"
+	optirun mpv --profile=AC "$@"
+fi

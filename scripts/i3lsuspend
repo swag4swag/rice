@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pident=$(pgrep bspwm)
+
+if [[ -z "$pident" ]]
+then
+	echo "FAILED"
+else
+	/usr/bin/i3lock -c '#000000'
+	#sleep 60 && xset dpms force off
+fi

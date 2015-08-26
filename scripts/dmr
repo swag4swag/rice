@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. panel_colors-dzen2
+pident=$(pgrep dmenu)
+
+if [ -z "$pident" ]
+then
+	dmenu_run -h 24 -fn 'Dejavu Sans-12' -nb "${COLOR_BACKGROUND}" -nf "${COLOR_FOREGROUND}" -sb "${COLOR_FOCUSED_FREE_BG}" -sf "${COLOR_FOCUSED_OCCUPIED_FG}" -b -class menu -s 0 -x 100 -y 8 -w 1720
+else
+	pkill dmenu
+fi

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+music_directory=$(cat ~/.mpd/mpd.conf | grep music_directory | grep -o "\".*\"" | sed 's/\"//g' | sed "s/~/\/home\/$(whoami)/")
+icon=""
+title=""
+
+update ()
+{
+	now_playing=$(mpc current -f %title%)
+	album=$(mpc current -f %album%)
+	locname=$(dirname "$(mpc current -f %file%)")
+	icon=$(find "$music_directory/$locname/"  -regex  '.*\(jpg\|JPG\|jpeg\|JPEG\)' | sort | head -n 1)
+	notify-send -i "$icon" "$now_playing" "$album"
+}
+
+update
+
+if [ "$1" = "-d" ]; then
+	while true
+	do
+		if [ "$(mpc current -f %title%)" = "$now_playing" ]
+		then
+			echo No_change
+			sleep 10
+		else
+			update
+		fi
+	done
+fi

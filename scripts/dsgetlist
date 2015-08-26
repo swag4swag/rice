@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Helper script to batch download multiple URLs in a text file.
+while read line; do
+  dsget $line
+done <$1
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+perl-rename 's/\(.*?\)//g' ./*
+perl-rename 's/\[.*?\]//g' ./*
+perl-rename 's/=.*?=//g' ./*
+perl-rename 's/{.*?}//g' ./*
+shopt -s extglob
+while IFS= read -r -d '' f; do
+  d=${f%/*} b=${f##*/*([[:space:]])} b=${b%%+([[:space:]])}
+  mv -v -- "$f" "$d/$b"
+done < <(
+find -maxdepth 1 -depth \( -name '[[:space:]]*' -o -name '*[[:space:]]' \) -print0
+)

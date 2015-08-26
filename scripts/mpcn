@@ -1,0 +1,5 @@
+#!/bin/sh
+mpc $1
+pkill mpdnotif
+mpdnotif -d &
+disown

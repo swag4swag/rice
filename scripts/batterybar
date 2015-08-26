@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Six battery states:
+while true
+do
+	states=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage | tail -c 5 | head -c 3)
+	battery=""
+	space=""
+	if [ "$states" = "" ]
+	then
+		battery="Z⚡ N"
+		space="X━━━━━━"
+	else
+		if [ "$(cat /sys/class/power_supply/ACAD/online)" = "1" ]
+		then
+			battery="Z⚡   "
+		else
+			battery="ZD   "
+		fi
+		if (( $states <= 100 && $states > 95 ))
+		then
+			battery+="━━━━━━"
+			space="X"
+		elif (( $states <= 95 && $states > 80 ))
+		then
+			battery+="━━━━━"
+			space="X━"
+		elif (( $states <= 80 && $states > 60 ))
+		then
+			battery+="━━━━"
+			space="X━━"
+		elif (( $states <= 60 && $states > 40 ))
+		then
+			battery+="━━━"
+			space="X━━━"
+		elif (( $states <= 40 && $states > 20 ))
+		then
+			battery+="━━"
+			space="X━━━━"
+		elif (( $states <= 20 && $states > 5 ))
+		then
+			battery+="━"
+			space="X━━━━━"
+		elif (( $states <= 50 && $states >= 0 ))
+		then
+			space="X━━━━━━"
+		fi
+	fi
+	echo "$battery
+	$space"
+	sleep 10
+done

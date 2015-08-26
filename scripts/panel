@@ -1,0 +1,43 @@
+#!/bin/bash
+
+. panel_config
+. panel_colors-dzen2
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+	printf "%s\n" "The panel is already running." >&2
+	pkill panel
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+export PANEL_FIFO=/tmp/bspwm/panel-fifow
+export PANEL_FIFO2=/tmp/bspwm/panel-fifot
+export PANEL_FIFO3=/tmp/bspwm/panel-fifos
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+[ -e "$PANEL_FIFO2" ] && rm "$PANEL_FIFO2"
+mkfifo "$PANEL_FIFO2"
+
+[ -e "$PANEL_FIFO3" ] && rm "$PANEL_FIFO3"
+mkfifo "$PANEL_FIFO3"
+
+bspc control --subscribe > "$PANEL_FIFO" &
+bspc control --subscribe > "$PANEL_FIFO2" &
+xtitle -sf 'T%s' > "$PANEL_FIFO2" &
+emergeindicator > "$PANEL_FIFO3" &
+batterybar > "$PANEL_FIFO3" &
+clock -sf 'S%a %I:%M %p' > "$PANEL_FIFO3" &
+echo "Q$(hostname)" > "$PANEL_FIFO3" &
+
+switcheroffset=$(echo "$SCREEN_WIDTH / 2  - 115" | bc -l)
+LEFT_OFFSET=$(echo "$SCREEN_WIDTH - $RIGHT_OFFSET - 420" | bc -l)
+
+cat "$PANEL_FIFO" | panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -ta c -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -xs 1 -w 230 -h 24  -y 1048 -x $switcheroffset -e 'button2=;'&
+
+cat "$PANEL_FIFO2" | panel_dzen2_t -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -xs 1 -w 420 -h 24  -y 1048 -x $RIGHT_OFFSET -e 'button2=;'&
+
+cat "$PANEL_FIFO3" | panel_dzen2_s -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -ta c -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" -xs 1 -w 420 -h 24  -y 1048 -x $LEFT_OFFSET -e 'button2=;'&
+
+wait
