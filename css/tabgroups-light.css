@@ -1,0 +1,90 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+@-moz-document url("chrome://browser/content/tabview.html")
+{
+    /*Tab groups*/
+    #bg
+    {
+       background-color: transparent;
+       background-image: none;
+    }
+    #actions
+    {
+       box-shadow: none;
+       background: none;
+       border: none;
+    }
+    .groupItem
+    {
+       background: none !important;
+       box-shadow: none !important;
+       border-radius: 0px !important;
+    }
+    .resizer
+    {
+       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAgMAAABGuH3ZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDBi8pV/YCYgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAMUExURQAAACUlJf///3h5ejX2g7cAAAADdFJOUwAAAPp2xN4AAAABYktHRAJmC3xkAAAAKklEQVQI12NgwA4kQIQGjMcG4nJZgJgGDAyMbUAWUxeMm/j/BwPDoi4NAE9tBjDQeFl1AAAAAElFTkSuQmCC);
+    }
+    /*Tabs*/
+    .tab
+    {
+       background: none;
+    }
+    .tab:hover
+    {
+       border: 1px solid #78797a;
+       border-radius: 0px;
+       margin: 3px;
+    }
+    .tab.focus:hover
+    {
+        margin: 4px;
+    }
+    .tab.focus
+    {
+        box-shadow: none !important;
+        border-radius: 0px !important;
+    }
+    /*Tab favicons*/
+    .favicon
+    {
+       background-color: #ecedee;
+       border: 1px solid #78797a;
+       border-radius: 0px !important;
+       padding: 1px !important;
+    }
+    /*Tab button*/
+    #exit-button, #exit-button[groups="1"], #exit-button[groups="2"], #exit-button[groups="3"]
+    {
+       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDDjsC2/d9zwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAJUExURXh5ev///3h5etd1hBcAAAACdFJOUwAAdpPNOAAAAAFiS0dEAf8CLd4AAAA0SURBVAjXYwgNZQ0NYAgNdUUntbpasZEMDKyuDgyiWloNDEARLbA4EgmUBpkgGopOAm0BAKudGaCezXg8AAAAAElFTkSuQmCC);
+       width: 18px;
+       height: 18px;
+    }
+    #exit-button:hover
+    {
+       background-color: #FFF;
+    }
+    #actions #searchbutton
+    {
+       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASBAMAAACk4JNkAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDES8NcpxTRgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAVUExURQAAAHh5enh5enh5enh5enh5ev///w4ZuDEAAAAFdFJOUwB/ks/mCqtWKQAAAAFiS0dEBmFmuH0AAAAuSURBVAjXY2AgBwgpQhmMJs4CEBaTA4sCOovRxFUAriMQrlsUJsjAiBAUJN52ABhdAx42Qg9zAAAAAElFTkSuQmCC);
+    }
+    /*Close buttons*//*DEVHERE*/
+    .close
+    {
+       max-width: 16px;
+       max-height: 16px;
+    }
+    .close:hover
+    {
+       background-image: -moz-image-rect(url("chrome://global/skin/icons/close.svg"), 0, 16, 16, 0);
+       background-color: #fff;
+    }
+    .close:hover:active
+    {
+       background-image: -moz-image-rect(url("chrome://global/skin/icons/close.svg"), 0, 16, 16, 0);
+       background-color: #ecedee;
+    }
+    /*Pencil*/
+    input.name::-moz-placeholder
+    {
+       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQDESgwZbWJkAAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAqUExURQAAAC0tLTw8PGlpaW1tbY2NjbKysuTk5Pb29vr6+v///3h5enh5enh5etg+s7oAAAAOdFJOUwAAAAAAAAAAAAAAXqC7Pn67AAAAAAFiS0dECmjQ9FYAAABKSURBVAjXY2DADniVoIwrVwQgArm+DmDGtbArYAbvjNyUBSDGzfZrXhCB2mR0AYiK6+4QAe67UC08d69ZgQ3jOW2yAGLPqlVgCgABqhof30jOmgAAAABJRU5ErkJggg==);
+    }
+}

@@ -1,0 +1,227 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("4chan.org")
+{
+  
+
+  
+  div.boardBanner,
+  form[enctype="multipart/form-data"],
+  .center,
+  hr,
+  #nav-links,
+  div#absbot,
+  div.pagelist,
+  .bottomCtrl,
+  .navLinks.navLinksBot.desktop,
+  .navLinks.desktop,
+  input[value="delete"],
+  div.sideArrows,
+  #dump-button,
+  #thread-watcher,
+  .ad-plea,
+  div.navLinks,
+  .filtered
+  {
+    display: none !important;
+  }
+  body
+  {
+    background: #FFF;
+    color: #666666;
+    margin-top: 0px !important;
+    font-size: 16px !important;
+    font-family: Noto Sans UI !important;
+    padding: 50px;
+  }
+  div.reply
+  {
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+    margin-right: 36px;
+  }
+
+  .reply:target, .reply.highlight
+  {
+    background-color: #e8e8e8 !important;
+    border: none !important;
+    border-radius: 4px;
+  }
+
+  .hasInline, .inline .post, .hasInline div.post blockquote.postMessage, .inline, .opContainer, .hasInline div.reply
+  {
+    display: block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  .hasInline .reply, .hasInline .reply .postMessage
+  {
+    margin-right: 2px !important;
+    padding-right: 0px !important;
+  }
+  #qp
+  {
+    background-color: #FFF !important;
+    border: none !important;
+    outline: none !important;
+    margin-right: 20px;
+  }
+  .yotsuba-b:root #header-bar.dialog
+  {
+    background-color: #e8e8e8;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #header-bar
+  {
+    opacity: 0;
+    background-color: #e8e8e8;
+    border-radius: 10px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3px;
+    box-shadow: none;
+    border: none;
+  }
+  #header-bar:hover
+  {
+    opacity: 1;
+  }
+  .postContainer.opContainer
+  {
+    overflow: hidden;
+    padding-left: 10px;
+  }
+  div.postInfo
+  {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+  }
+  div.thread
+  {
+    border: 1px solid #e8eaed;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  .postContainer.replyContainer
+  {
+    border-top: 1px solid #e8e8e8;
+    
+    max-width: 100%;
+  }
+  .post.op .fileThumb
+  {
+    margin-top: 25px !important;
+  }
+  div.post div.file .fileThumb
+  {
+    min-width: 0px;
+    max-width: 95%;
+    max-height: 95%;
+    overflow: hidden;
+  }
+  .expanded-image > .post > .file > .fileThumb > .full-image:not(#ihover)
+  {
+    max-width: 100%;
+  }
+  .expanded-image > .post > .file > .fileThumb > .full-image:not(#ihover)
+  {
+    display: block;
+    max-width: 100%;
+  }
+  div.post div.postInfo span.nameBlock span.name,
+  div.post div.postInfo span.subject
+  {
+    color: #333;
+    font-weight: normal;
+  }
+  /*NORMAL TEXT*/
+  .useremail:not(:hover) .name:not(.capcode), 
+  .useremail:not(:hover) .postertrip:not(.capcode), 
+  a, 
+  a:visited,
+  .quoteLink, 
+  .quotelink, 
+  .deadlink,
+    div.post div.postInfo span.nameBlock span.postertrip
+  {
+    color: #666666 !important;
+  }
+  /*HOVER TEXT*/
+  a:hover, 
+  .useremail :hover,
+  .useremail:hover *,
+  div.post div.postInfo span.postNum a:hover, 
+  .posteruid .hand:hover
+  {
+    color: #444444!important;
+  }
+  /*QUOTES*/
+  blockquote > span.quote
+  {
+    color: #ea7878;
+  }
+  .fileText a{text-decoration: none;}
+  #qr
+  {
+    background-color: #FFF;
+    border: 4px solid #FFF;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px #777;
+  }
+  #qr .fa-times:before
+  {
+    content: "";
+  }
+  #qr .fa-times
+  {
+    width: 10px;
+    height: 4px;
+    background-color: #d95f69;
+    margin-top: -29px !important;
+    margin-right: 12px;
+  }
+  #qr textarea
+  {
+    border-color: #e8e8e8;
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+  }
+  .captcha-img
+  {
+    outline: none;
+    border-right: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+  }
+  input[type="text"]:focus, input[type="password"]:focus, input:focus:not([type]), textarea:focus 
+    {
+      border: 1px solid #7c90a3 !important;
+    }
+  .field[placeholder="Name"]
+  {
+    border-top-left-radius: 4px;
+  }
+  .field[placeholder="Subject"]
+  {
+    border-top-right-radius: 4px;
+  }
+  .field[placeholder="Verification"]
+  {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 6px;
+    border-color: #e8e8e8;
+  }
+  div[style="position: relative; margin-top: 20px;"], .persona
+  {
+    margin-top: 5px !important;
+  }
+
+}

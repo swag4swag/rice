@@ -1,0 +1,159 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("boards.4chan.org"), domain("i.4cdn.org")
+{
+    .photon:root .dialog, .tomorrow:root .dialog
+    {
+    	background-color: #333;
+        border-bottom: 0px !important;
+        box-shadow: none;
+    }
+    div.post div.postInfo
+    {
+        border-bottom: 1px solid #222;
+        border-right: 1px solid #222;
+        border-left: 1px solid #222;
+        padding: 0px 3px 0px 3px;
+        margin-left: 10px;
+    }
+    div.post.op div.postInfo
+    {
+        border: none !important;
+    }
+     div.post.op div.fileText, div.post.op .dateTime, div.post.op .backlink-container,
+    form[action="https://sys.4chan.org/g/post"], form[action="https://sys.4chan.org/a/post"]
+    {
+        display: none;
+    }
+    div.thread > div:nth-of-type(2) > div.reply
+        {
+            margin-top: 0px !important;
+        }
+    #qp
+    {
+        border-left: 1px solid #222 !important;
+        border-top: none !important;
+        border-bottom: 1px solid #222 !important;
+        border-right: 1px solid #222 !important;
+        margin-right: 7%;
+    }
+    #header-bar
+    {
+        background-color: #222;
+    }
+    #qr
+    {
+    	background-color: #444 !important;
+        border-color: #444;
+        box-shadow: 0px 0px 4px 0px #101010;
+    }
+    .qphl
+    {
+        color: #ea7878 !important;
+        outline: none;
+    }
+    div.reply, .reply:target,.reply.highlight
+    {
+        background-color: transparent !important;
+        border: none;
+        margin-top: 0px;
+        margin-left: 0px;
+        padding-left: 0px;
+        padding-top: 0px;
+    }
+    
+    body
+    {
+        font-size: 14px;
+         background-color: #222;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        
+       font-family: "Noto Sans UI";
+       color: #ccc;
+    }
+    .fileText
+    {
+        margin-left: 18px !important;
+    }
+    hr, div.reply input, select#index-mode, select#index-sort, .pagelist, #nav-links
+    {
+       display:none;
+    }
+    a, a:visited, a.replylink:not(:hover), div#absbot a:not(:hover), .quoteLink, .quotelink, .deadlink, 
+    div.post div.postInfo span.nameBlock, .postertrip, .useremail:not(:hover) .name, .useremail:not(:hover) .postertrip,
+    .photon:root #qr select:hover, .photon:root #qr select, span.subject, div.post div.postInfo span.postNum > a
+    {
+        color: #ccc!important;
+        font-weight: normal !important;
+    }
+    a:hover, div.post div.postInfo span.postNum a:hover, .posteruid .hand:hover, a.quoteLink:hover, 
+    a.quotelink:hover, .useremail .name:hover, .useremail .postertrip:hover, span.name, .tomorrow:root #qr select:hover,
+    .tomorrow:root #qr select
+    {
+        color: #aaa !important;
+    }
+    .catalog-thread
+    {
+        border: 0px;
+        background-color: #2d2d2d;
+        height: 400px;
+        margin: 10px;
+        padding-top: 10px;
+        box-shadow: 0px 0px 4px 0px #101010;
+    }
+    #header.top #header-bar
+    {
+        border-color: #ccc;
+    }
+    div.thread
+    {
+        margin: 5%;
+        border: 1px solid #333;
+        box-shadow: 0px 0px 4px 0px black;
+        background-color: #2d2d2d;
+        padding-top: 15px;
+    }
+    .postContainer.replyContainer
+    {
+        border-top: 1px solid rgba(25, 25, 25, 0.5);
+        padding: 0px;
+    }
+    .opContainer, .op
+    {
+        overflow: hidden !important;
+    }
+    .summary
+    {
+        margin-left: 15px;
+    }
+    blockquote > span.quote
+    {
+        color: #ea7878;
+    }
+    .sideArrows
+    {
+        color: #ccc!important;
+    }
+    .gecko.fit-width:root .full-image
+    {
+        animation: expaimage 5s;
+    }
+    @keyframes expaimage
+    {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    .reply:target, .reply.highlight
+    {
+        background: #333 !important;
+        border: none !important;
+        width:95%;
+    }
+    input[value="delete"], div.boardBanner, .topad, #thread-watcher, .middlead, .ad-plea, .bottomad, #absbot, .bottomCtrl,.center, .navLinks, .notification.error
+    {
+        display: none;
+    }
+}
+

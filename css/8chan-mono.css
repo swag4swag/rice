@@ -1,0 +1,147 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("8ch.net") 
+{
+    body
+    {
+        background: #ebebeb !important;
+        color: #666 !important;
+        font-size: 12pt !important;
+    }
+    div.post p
+    {
+        font-size: 12pt !important;
+    }
+    a
+    {
+        text-decoration: none!important;
+    }
+    h1
+    {
+        color: #666 !important;
+    }
+    form
+    {
+        margin-bottom: 0em !important;
+    }
+    div.post.reply, div.post.reply.has-file.body-not-empty
+    {
+        background: #eee !important;
+        border: none !important;
+        min-width: 98%;
+        max-width: 98%;
+    }
+    div.thread
+    {
+        background-color: #ddd !important;
+        border: none !important;
+        margin-bottom: 10px !important;
+        padding: 10px !important;
+    }
+    form[action="/post.php"] table
+    {
+        background: #ddd !important;
+        padding: 20px;
+        border: none !important;
+    }
+    form table tr th
+    {
+        background: #eee;
+        border: none !important;
+    }
+    input[type="text"], input[type="password"], textarea
+    {
+        border: none !important;
+        border-left: 2px solid #ddd !important;
+        border-right: 2px solid #ddd !important;
+    }
+    form table input
+    {
+        max-height: 20px !important;
+    }
+    input[type="submit"]
+    {
+        float: left !important;
+        background-color: #eee !important;
+        margin-top: 0px;
+        border: none !important;
+    }
+    label[for="spoiler"]
+    {
+        float: right !important;
+        margin-top: 2px !important;
+    }
+    input[type="text"]:focus, input[type="password"]:focus, textarea:focus
+    {
+        border-left: 2px solid #bbb !important;
+    }
+    #favorite-star
+    {
+        margin-left: 10px !important;
+    }
+    .desktop-style div.boardlist:nth-child(1), div.pages, .desktop-style div.boardlist:not(.bottom)
+    {
+        background-color: #eee;
+        border: none !important;
+        padding: 2px !important;
+        color: #666 !important;
+    }
+    #thread-links
+    {
+        float: left !important;
+        margin-left: 10px;
+    }
+    span#updater
+    {
+        float: right !important;
+        margin-top: -4px !important;
+        padding-bottom: 4px !important;
+    }
+
+
+
+    p.intro a.email:hover span.name, p.intro span.capcode, p.intro a.capcode, p.intro a.nametag, 
+    a:hover, p.intro a.post_no:hover, div.post.reply div.body a
+    {
+        color: #666;
+    }
+    p.intro a.email span.name, a, a:visited, span.heading, p.intro span.subject, div.pages
+    {
+        color: #666;
+    }
+    p.intro span.name, span.quote
+    {
+        color: #555;
+    }
+    .quote
+    {
+        color: #333;
+    }
+
+    .kwd, .tag
+    {
+        color: #555;
+    }
+    .typ, .atn
+    {
+        color: #555;
+    }
+    .str, .atv
+    {
+        color: #555;
+    }
+
+    hr, .unimportant.board-settings, div.blotter, footer, div.delete, .styles, div.boardlist.bottom,
+    div.banner, #treeview, div[style="padding-top:20px;text-align:center;"]
+    {
+        display: none;
+    }
+    div#yeelmao
+    {
+        display: none !important;
+    }
+    #updater
+    {
+        padding-top: 2px;
+    }
+}
