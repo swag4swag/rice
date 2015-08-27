@@ -113,6 +113,8 @@ REDISTRIBUTION, COPYING, MODIFYING, REVERSE-ENGINEERING, LOOKING, GLANCING, PEEK
     margin-left: 0px;
     max-height: 8px !important;
     margin-bottom: 5px;
+        background-image: none !important;
+
 }
 /*Makes tabs smaller*/
 .tab-content
@@ -130,6 +132,7 @@ REDISTRIBUTION, COPYING, MODIFYING, REVERSE-ENGINEERING, LOOKING, GLANCING, PEEK
 .tab-background-end[selected=true]::after,
 .tab-background-end[selected=true]::before
 {
+    opacity: 0 !important;
     min-height: 28px !important;
 }
 /*New tab button*/
@@ -216,12 +219,15 @@ REDISTRIBUTION, COPYING, MODIFYING, REVERSE-ENGINEERING, LOOKING, GLANCING, PEEK
 }
 .tab-background-start, .tab-background-middle, #urlbar-go-button, .notification-anchor-icon
 {
-    display: none;
+    display: none !important;
+        background-image: none !important;
+
 }
 .tabbrowser-tab:not([pinned])
 {
     -moz-box-flex: 0;
-    transition: width 0.3s linear, left 0.3s linear;
+    transition: none !important;
+    transition: width 0.3s linear, left 0.3s linear !important;
     min-width: 33px;
 }
 .tabbrowser-tab:not([pinned]) .tab-icon-image
@@ -474,5 +480,6 @@ findbar
     background: transparent;
     color: #ea7878;
 }
+
 
 
