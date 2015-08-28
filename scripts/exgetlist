@@ -1,8 +1,0 @@
-#!/bin/bash
-
-#Helper script to batch download multiple URLs in a text file.
-while read line; do
-  echo $line
-  exget $line
-done <$1
-
