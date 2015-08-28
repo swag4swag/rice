@@ -68,7 +68,7 @@ BackgroundBox .button:active {
 .button.default {
     border-color: @theme_bg_color;
     background-color: @button_bg_color;
-    color: @theme_base_color;
+    color: shade(@theme_selected_fg_color, 1.5_;
 }
 
 .button.default:hover {

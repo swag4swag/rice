@@ -24,7 +24,7 @@
     background-color: shade(@menu_bg_color, 0.96);
     background-image: none;
     border-color: shade(@menu_bg_color, 0.87);
-    color: @theme_base_color;
+    color: @theme_text_color;
 }
 
 .entry:focus,
@@ -41,7 +41,7 @@
     background-color: shade(@menu_bg_color, 0.9);
     border-style: solid;
     border-color: shade(@menu_bg_color, 0.82);
-    color: @theme_base_color;
+    color: @theme_text_color;
 }
 
 .entry:selected,
