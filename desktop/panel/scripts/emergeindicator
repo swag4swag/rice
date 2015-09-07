@@ -1,0 +1,56 @@
+#!/bin/bash
+ret=""
+jej=true
+eme=false
+count=21
+lim=20
+not=false
+while true
+do
+	#if the eme state, or emerge is active, do the oscillation
+	if $eme
+	then
+		#this is the oscillation - each time it loops, it changes the state for the next loop
+		if $jej
+		then
+			ret="EΑ → Ωy"
+			jej=false
+			echo $ret
+		else
+			ret="EΑ → Ω"
+			jej=true
+			echo $ret
+		fi
+		#blinks 1 times per 0.1 second, roughly 60fps
+		sleep 0.1
+	fi
+
+	#increments the counter - we do not want to run ps axjf ... needlessly, counting up surely less complex
+	(( count+=1 ))
+
+	#checks if the counter is high enough to recheck for emerge activity
+	if (( $count > $lim ))
+	then
+		if ( ps axjf | grep "apt" | grep -v "grep" | grep -v "indicator" > /dev/null )
+		then
+			eme=true
+			not=true
+			lim=200
+			#sets the limit to 200, or 20 seconds considering that emerge is oscillating
+		else
+			ret="EΑ → Ω"
+			eme=false
+			echo $ret
+			# set the limit to 0 so more time will be spent sleeping rather than counting up/iterating
+			lim=0
+			if $not
+			then
+				notify-send -i dialog-information-symbolic "Emerging Finished!"
+				not=false
+			fi
+			sleep 15
+		fi
+		count=0
+	fi
+
+done

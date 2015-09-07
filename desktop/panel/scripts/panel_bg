@@ -1,0 +1,3 @@
+#!/bin/sh
+dzen2 -xs 1 -w 1730 -y 1043 -x 95 -h 27 -bg '#363636' -p -title-name panelbg
+wait

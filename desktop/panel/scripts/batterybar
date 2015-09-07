@@ -1,0 +1,19 @@
+#!/bin/bash
+while true
+do
+  ret="Z"
+  idle=$(mpstat 1 1 | cut -c 91-96 | tail -n 1 )
+  cpu=0
+  for i in $idle
+  do
+    i=$(echo $i | rev | cut -c 2- | rev)
+    usage=$(echo "scale=1;100 - $i" | bc)
+    for i in $(seq ${#usage} 4)
+    do
+      usage=" $usage"
+    done
+    ret="$ret CPU:$usage% "
+    cpu=$((cpu+1))
+  done
+  echo -e "$ret"
+done

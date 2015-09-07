@@ -1,0 +1,6 @@
+#!/bin/sh
+
+FONT_FAMILY='Droid Sans Mono for Powerline'
+FONT_SIZE=13
+SCREEN_WIDTH=1920
+RIGHT_OFFSET=100

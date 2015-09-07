@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. panel_colors-dzen2
+
+dmenu_run -h 16 -fn 'Droid Sans Mono for Powerline-9' -nb "$COLOR_BACKGROUND" -nf "$COLOR_FOREGROUND" -sb "$COLOR_FOCUSED_OCCUPIED_BG" -sf "$COLOR_BACKGROUND" -b -class menu -s 0 -x 100 -y 15 -w 1720

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+font_size=14
+
+. panel_colors-dzen2
+
+screen_width=1920
+NORMIFS=$IFS
+FIELDIFS=':'
+PADDING='  '
+MEGAPADDING='      '
+POW=''
+POW_END="^fg(${COLOR_POWERLINE_BLOCK1})^bg(${COLOR_POWERLINE_BLOCK1})$POW$POW"
+POW_MID="^fg(${COLOR_POWERLINE_BLOCK3})^bg(${COLOR_POWERLINE_TEXT3})$POW^fg(${COLOR_POWERLINE_BLOCK1})^bg(${COLOR_POWERLINE_BLOCK3})$POW"
+POW_MIDA="^fg(${COLOR_POWERLINE_BLOCK3})^bg(${COLOR_POWERLINE_BLOCK2})$POW^fg(${COLOR_POWERLINE_TEXT3})^bg(${COLOR_POWERLINE_BLOCK3})$POW"
+POW_START="^fg(${COLOR_POWERLINE_BLOCK3})^bg(${COLOR_BACKGROUND})$POW^fg(${COLOR_POWERLINE_BLOCK2})^bg(${COLOR_POWERLINE_BLOCK3})$POW"
+
+while getopts 'f:s:' opt ; do
+	case "$opt" in
+		f)
+			font_family=$OPTARG
+			;;
+		s)
+			font_size=$OPTARG
+			;;
+	esac
+done
+
+shift $((OPTIND - 1))
+
+while read -r line ; do
+	case $line in
+		Z*)
+			# battery
+			battery="^fg($COLOR_BATTERY_FULL)^bg($COLOR_STATUS_BG)${line#?}^fg()^bg()"
+			;;
+		Q*)
+			# computer name
+			compname="^fg($COLOR_POWERLINE_TEXT1)^bg($COLOR_POWERLINE_BLOCK1)${PADDING}${line#?}^fg()^bg()$POW_END"
+			;;
+		S*)
+			# clock output
+      sys_infos="$POW_START^fg($COLOR_POWERLINE_TEXT2)^bg($COLOR_POWERLINE_BLOCK2)${PADDING}${line#?}${PADDING}$POW_MIDA^fg()^bg($COLOR_POWERLINE_TEXT3)${MEGAPADDING}$POW_MID"
+			;;
+	esac
+	printf "%s\n" "$battery $sys_infos$compname"
+done
+

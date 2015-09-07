@@ -1,0 +1,103 @@
+#!/bin/bash
+
+font_size=14
+
+. panel_colors-dzen2
+
+screen_width=1920
+NORMIFS=$IFS
+FIELDIFS=':'
+PADDING=''
+
+while getopts 'f:s:' opt
+do
+	case "$opt" in
+		f)
+			font_family=$OPTARG
+			;;
+		s)
+			font_size=$OPTARG
+			;;
+	esac
+done
+
+shift $((OPTIND - 1))
+
+while read -r line
+do
+	case $line in
+		W*)
+			# bspwm internal state
+      wm_infos="^fg(${COLOR_BACKGROUND})^bg(${COLOR_POWERLINE_BLOCK3})$PADDING"
+			IFS=$FIELDIFS
+			
+			set -- ${line#?}
+			
+			while [ $# -gt 0 ]
+			do
+				item=$1
+				
+				case $item in
+					[OoFfUu]*)
+					
+						# desktops
+						name=${item#?}
+						
+						case $item in
+							O*)
+								# focused occupied desktop
+								FG=$COLOR_FOCUSED_OCCUPIED_FG
+								BG=$COLOR_FOCUSED_OCCUPIED_BG
+                PFG=$BG
+                PBG=$COLOR_POWERLINE_BLOCK3
+								;;
+							F*)
+								# focused free desktop
+								FG=$COLOR_FOCUSED_FREE_FG
+								BG=$COLOR_FOCUSED_FREE_BG
+                PFG=$BG
+                PBG=$COLOR_POWERLINE_BLOCK3
+								;;
+							U*)
+								# focused urgent desktop
+								FG=$COLOR_FOCUSED_URGENT_FG
+								BG=$COLOR_FOCUSED_URGENT_BG
+                PFG=$FG
+                PBG=$COLOR_POWERLINE_BLOCK3
+								;;
+							o*)
+								# occupied desktop
+								FG=$COLOR_OCCUPIED_FG
+								BG=$COLOR_OCCUPIED_BG
+                PFG=$FG
+                PBG=$COLOR_POWERLINE_BLOCK3
+								;;
+							f*)
+								# free desktop
+								FG=$COLOR_FREE_FG
+								BG=$COLOR_FREE_BG
+                PFG=$FG
+                PBG=$COLOR_POWERLINE_BLOCK3
+								;;
+							u*)
+								# urgent desktop
+								FG=$COLOR_URGENT_FG
+								BG=$COLOR_URGENT_BG
+                PFG=$FG
+                PBG=$COLOR_POWERLINE_BLOCK3
+								;;
+						esac
+						
+            wm_infos="${wm_infos}^fg(${FG})^bg(${BG})^ca(1, bspc desktop -f ${name})^ca(2, bspc window -d ${name})^fg(${PBG})^bg(${BG})${PADDING}^fg(${FG})^bg(${BG})${name}^fg(${BG})^bg(${PBG})${PADDING}^ca()^ca()"
+						;;
+				esac
+				
+				shift
+			done
+      wm_infos="${wm_infos}^fg(${PBG})^bg(${COLOR_BACKGROUND})${PADDING}"
+			IFS=$NORMIFS
+			;;
+	esac
+	
+	printf "%s\n" "$wm_infos"
+done
