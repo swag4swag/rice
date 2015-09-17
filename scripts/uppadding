@@ -1,5 +1,6 @@
 #!/bin/sh
 
+desktop=$(bspc query -D -d focused)
 tpad=$(cat /tmp/bspwm/tpad)
 bpad=$(cat /tmp/bspwm/bpad)
 
@@ -8,13 +9,11 @@ do
     tpad=$(($tpad+2))
     bpad=$(($bpad+2))
 
-    bspc config top_padding $tpad
-    bspc config right_padding $tpad
-    bspc config left_padding $tpad
+    bspc config -d $desktop top_padding $tpad
+    bspc config -d $desktop right_padding $tpad
+    bspc config -d $desktop left_padding $tpad
 
-    bspc config -m HDMI1 bottom_padding $tpad
-    bspc config -m VGA1 bottom_padding $tpad
-    bspc config -m eDP1 bottom_padding $bpad
+    bspc config -d $desktop bottom_padding $tpad
 done
 
 echo $tpad > /tmp/bspwm/tpad

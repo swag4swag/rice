@@ -5,8 +5,6 @@ curgap=$(bspc config window_gap)
 for i in 1 2 3 4 5
 do
     curgap=$(($curgap - 2))
-    bspc config window_gap $curgap
-    bspc config -m eDP1 window_gap $curgap
-    bspc config -m HDMI1 window_gap $curgap
-    bspc config -m VGA1 window_gap $curgap
+    bspc config -m HDMI-0 window_gap $curgap
+    sleep 0.01
 done
