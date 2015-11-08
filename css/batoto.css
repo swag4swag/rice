@@ -2,7 +2,7 @@
 
 @-moz-document domain("bato.to") 
 {
-#topa, div[style="width: 160px; height: 700px; position: absolute; top:100px; right:0; "], div[style="position:absolute; right:50%; top:0;"], #zoom_notice, #footer_utilities, a[title="Reader Settings"]
+#topa, div[style="width: 160px; height: 700px; position: absolute; top:100px; right:0; "], div[style="position:absolute; right:50%; top:0;"], #zoom_notice, #footer_utilities, a[title="Reader Settings"], iframe
 {
 display: none !important;
 }
@@ -58,5 +58,36 @@ font-size: 13pt !important;
 #mainContent
 {
 background-color: #222;
+}
+a
+{
+color: #CCC;
+}
+.header, div[style="padding: 8px; text-align: center;"], ._sbcollapsable, .published
+{
+background: #333 !important;
+text-shadow: none !important;
+color: #ddd;
+}
+.row1, .post_block.row1, .bar, .ipsSideBlock h3, .general_box h3, .statistics_head
+{
+background-color: #282828;
+text-shadow: none !important;
+color: #c8c8c8;
+border: none !important;
+
+border-color: #454545 !important;
+}
+input[value="Search"]
+{
+margin-top: 10px !important;
+}
+#recentajaxcontent li, #idm_categories a, #idm_categories li.with_sub.open li, #index_stats .status_list li, #panel_files .file_listing li, #panel_screenshots #ss_linked li, .file_listing, #cart_totals td, div#member_filters li, #files li, .ipsType_sectiontitle, #order_review td, #package_details .package_info, .block_list li, .package_view_top, .member_entry, #help_topics li, .ipsBox_container .ipsType_pagetitle, .userpopup dl, #announcements td, .sideVerticalList li, fieldset.with_subhead ul, .ipsList_data li, .ipsList_withminiphoto li, .ipsList_withmediumphoto li, table.ipb_table td, .store_categories li, #mini_cart li, #index_stats div[id*="statusReply"], #ipg_category .ipg_category_row, .block_inner .ipb_table td, .gallery_pane h2, .status_feedback li[id*="statusReply"], .ipsSideMenu ul li, #usercp_content .ipsType_subtitle, .ipbfs_login_row, .articles .block-1, .articles .type-1x2x2 .article_row, #idm_category .idm_category_row, #category_list li a, .ipsComment, #forum_table.ipb_table tr:last-of-type td, .header th
+{
+border-color: #444 !important;
+}
+a:hover, .ipsType_pagetitle, .ipsType_subtitle
+{
+color: #eee !important;
 }
 }
