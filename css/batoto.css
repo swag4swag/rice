@@ -1,0 +1,56 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("bato.to") 
+{
+#topa, div[style="width: 160px; height: 700px; position: absolute; top:100px; right:0; "], div[style="position:absolute; right:50%; top:0;"], #zoom_notice, #footer_utilities, a[title="Reader Settings"]
+{
+display: none !important;
+}
+#comic_wrap > div
+{
+margin: 0px !important;
+top: 0px !important;
+left: 0px !important;
+}
+#comic_page
+{
+width: 100% !important;
+}
+li[style="display: inline-block; float: right; margin-top:-11px;"]
+{
+background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAMAAAC2PjgYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wsICQgap7JVWQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAh1BMVEUAAAAyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL////aOedfAAAAK3RSTlMAAwUGCAoLDRARLS40Nzw+Sk1WWVpglZ2ho66wtLjBwsXM7fLz9fb3+Pn6IfycCgAAAAFiS0dELLrdcasAAACsSURBVDjLtdXJEoIwEEXRyCDO4qw4A4p6////3GsV5V2Y9Vkk6e7XIYQQQpwFcwbXvCP4kLqYGg7VJjMcynlqOBzzxHAexchwuG8Tw6FedA2HUx4bTtNehU8Ot3VqONSryHA4zyLDaQ5jw6Ha9QyHcpkZDpevRmrlPPcTw+G17f+Nu8uop6qPVGVyTaBaTDWwGg83fGq0VXCoWHKhpyJVBbZaB2rZyFX286J8AzNlbVtix17eAAAAAElFTkSuQmCC");
+}
+li[style="display: inline-block; float: left; margin-top:-11px;"]
+{
+background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAMAAAC2PjgYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wsICQgap7JVWQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAh1BMVEUAAAAyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL////aOedfAAAAK3RSTlMAAwUGCAoLDRARLS40Nzw+Sk1WWVpglZ2ho66wtLjBwsXM7fLz9fb3+Pn6IfycCgAAAAFiS0dELLrdcasAAACsSURBVDjLtdXJEoIwEEXRyCDO4qw4A4p6////3GsV5V2Y9Vkk6e7XIYQQQpwFcwbXvCP4kLqYGg7VJjMcynlqOBzzxHAexchwuG8Tw6FedA2HUx4bTtNehU8Ot3VqONSryHA4zyLDaQ5jw6Ha9QyHcpkZDpevRmrlPPcTw+G17f+Nu8uop6qPVGVyTaBaTDWwGg83fGq0VXCoWHKhpyJVBbZaB2rZyFX286J8AzNlbVtix17eAAAAAElFTkSuQmCC");
+transform: rotate(180deg);
+-webkit-transform: rotate(180deg);
+}
+li[style="display: inline-block; float: right; margin-top:-11px;"] a, li[style="display: inline-block; float: left; margin-top:-11px;"] a,
+a[title="Reader Settings"] img
+{
+opacity: 0;
+}
+.moderation_bar, .moderation_bar a
+{
+font-size: 15pt !important;
+margin: 0 !important;
+height: 50px;
+padding: 0 !important;
+padding-bottom: 15px !important;
+padding-top: 15px !important;
+color: #CCC !important;
+}
+#user_navigation a, #main_search
+{
+font-size: 14pt !important;
+}
+select, #search_options
+{
+font-size: 13pt !important;
+}
+#mainContent
+{
+background-color: #222;
+}
+}
