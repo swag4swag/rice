@@ -1,0 +1,4 @@
+#!/bin/sh
+DESKTOP_SESSION="gnome"
+dmenu_run -nb "#ffffff" -nf "#888888" -fn "Noto Sans-8" -sf "#666666" -sb "#dddddd" -h 32 -y 5 -x 100 -w 3640
+
