@@ -1,0 +1,92 @@
+#!/bin/bash
+
+font_family='DejaVu Sans'
+font_size=14
+
+. panel_colors-dzen2
+
+screen_width=1920
+NORMIFS=$IFS
+FIELDIFS=':'
+PADDING='  '
+
+while getopts 'f:s:' opt
+do
+	case "$opt" in
+		f)
+			font_family=$OPTARG
+			;;
+		s)
+			font_size=$OPTARG
+			;;
+	esac
+done
+
+shift $((OPTIND - 1))
+
+while read -r line
+do
+	case $line in
+		W*)
+			# bspwm internal state
+			wm_infos=""
+			IFS=$FIELDIFS
+			
+			set -- ${line#?}
+			
+			while [ $# -gt 0 ]
+			do
+				item=$1
+				
+				case $item in
+					[OoFfUu]*)
+					
+						# desktops
+						name=${item#?}
+						
+						case $item in
+							O*)
+								# focused occupied desktop
+								FG=$COLOR_FOCUSED_OCCUPIED_FG
+								BG=$COLOR_FOCUSED_OCCUPIED_BG
+								;;
+							F*)
+								# focused free desktop
+								FG=$COLOR_FOCUSED_FREE_FG
+								BG=$COLOR_FOCUSED_FREE_BG
+								;;
+							U*)
+								# focused urgent desktop
+								FG=$COLOR_FOCUSED_URGENT_FG
+								BG=$COLOR_FOCUSED_URGENT_BG
+								;;
+							o*)
+								# occupied desktop
+								FG=$COLOR_OCCUPIED_FG
+								BG=$COLOR_OCCUPIED_BG
+								;;
+							f*)
+								# free desktop
+								FG=$COLOR_FREE_FG
+								BG=$COLOR_FREE_BG
+								;;
+							u*)
+								# urgent desktop
+								FG=$COLOR_URGENT_FG
+								BG=$COLOR_URGENT_BG
+								;;
+						esac
+						
+						wm_infos="${wm_infos}^fg(${FG})^bg(${BG})^ca(1, bspc desktop -f ${name})^ca(2, bspc window -d ${name})${PADDING}${name}${PADDING}^ca()^ca()"
+						;;
+				esac
+				
+				shift
+			done
+			
+			IFS=$NORMIFS
+			;;
+	esac
+	
+	printf "%s\n" "$wm_infos"
+done
